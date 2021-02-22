@@ -11,6 +11,13 @@
 #ifndef ST7789_H
 #define ST7789_H
 
+class IPin
+{
+public:
+    virtual void Set(void) = 0;
+    virtual void Reset(void) = 0;
+};
+
 class ST7789
 {
 public:
