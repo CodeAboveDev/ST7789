@@ -10,4 +10,10 @@
  ****************************************************************/
 #include "ST7789.h"
 
+ST7789::ST7789(IPin& rstPin, IPin& dcPin)
+: resetPin(rstPin), dataCommandPin(dcPin)
+{
+
+}
+
 

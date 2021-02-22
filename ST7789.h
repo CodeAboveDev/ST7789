@@ -21,10 +21,12 @@ public:
 class ST7789
 {
 public:
+    ST7789(IPin& rstPin, IPin& dcPin);
 
 
 private:
-
+    IPin& resetPin;
+    IPin& dataCommandPin;
 
 };
 
