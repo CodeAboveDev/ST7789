@@ -11,6 +11,8 @@
 #ifndef ST7789_H
 #define ST7789_H
 
+#include <stdint.h>
+
 class IPin
 {
 public:
@@ -23,11 +25,18 @@ class ST7789
 public:
     ST7789(IPin& rstPin, IPin& dcPin);
 
+    void Task1ms(void);
+
     void Reset(void);
 
 private:
     IPin& resetPin;
     IPin& dataCommandPin;
+
+    uint32_t Timer_1ms { 0u };
+
+    void Wait(uint32_t ms);
+    
 
 };
 
