@@ -16,4 +16,10 @@ ST7789::ST7789(IPin& rstPin, IPin& dcPin)
 
 }
 
-
+void ST7789::Reset(void)
+{
+    resetPin.Reset();
+    Wait(10);
+    resetPin.Set();
+    Wait(120);
+}

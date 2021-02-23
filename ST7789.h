@@ -23,6 +23,7 @@ class ST7789
 public:
     ST7789(IPin& rstPin, IPin& dcPin);
 
+    void Reset(void);
 
 private:
     IPin& resetPin;
