@@ -18,22 +18,22 @@ ST7789::ST7789(IPin& rstPin, IPin& dcPin)
 
 void ST7789::Task1ms(void)
 {
-    Timer_1ms++;
+    Timer_ms++;
 }
 
 void ST7789::Reset(void)
 {
     resetPin.Reset();
-    Wait(10);
+    Wait(MinimumResetPulseTime_ms);
     resetPin.Set();
-    Wait(120);
+    Wait(MaximumBlankingTime_ms);
 }
 
 void ST7789::Wait(uint32_t ms)
 {
-    uint32_t endTime = Timer_1ms + ms;
+    uint32_t endTime = Timer_ms + ms;
 
-    while(Timer_1ms < endTime)
+    while(Timer_ms < endTime)
     {
         // Wait for them time to pass
     }

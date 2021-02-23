@@ -30,10 +30,15 @@ public:
     void Reset(void);
 
 private:
+    static constexpr uint8_t MinimumResetPulseTime_ms { 10u };
+    static constexpr uint8_t MaximumBlankingTime_ms { 120u };
+
     IPin& resetPin;
     IPin& dataCommandPin;
 
-    uint32_t Timer_1ms { 0u };
+
+
+    uint32_t Timer_ms { 0u };
 
     void Wait(uint32_t ms);
     
