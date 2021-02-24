@@ -10,6 +10,8 @@
  ****************************************************************/
 #include "ST7789.h"
 
+volatile uint32_t ST7789::Timer_ms { 0u };
+
 ST7789::ST7789(IPin& rstPin, IPin& dcPin)
 : resetPin(rstPin), dataCommandPin(dcPin)
 {

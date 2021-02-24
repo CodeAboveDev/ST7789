@@ -25,7 +25,7 @@ class ST7789
 public:
     ST7789(IPin& rstPin, IPin& dcPin);
 
-    void Task1ms(void);
+    static void Task1ms(void);
 
     void Reset(void);
 
@@ -38,7 +38,7 @@ private:
 
 
 
-    uint32_t Timer_ms { 0u };
+    volatile static uint32_t Timer_ms;
 
     void Wait(uint32_t ms);
     
