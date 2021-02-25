@@ -20,10 +20,16 @@ public:
     virtual void Reset(void) = 0;
 };
 
+class IST7789Spi
+{
+public:
+    virtual void Write(const uint8_t byte) = 0;
+};
+
 class ST7789
 {
 public:
-    ST7789(IPin& rstPin, IPin& dcPin);
+    ST7789(IST7789Spi& spi, IPin& rstPin, IPin& dcPin);
 
     static void Task1ms(void);
 
@@ -35,6 +41,7 @@ private:
 
     IPin& resetPin;
     IPin& dataCommandPin;
+    IST7789Spi& spi;
 
 
 
