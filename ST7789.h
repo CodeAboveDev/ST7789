@@ -45,11 +45,9 @@ private:
     static constexpr uint8_t MinimumResetPulseTime_ms { 10u };
     static constexpr uint8_t MaximumBlankingTime_ms { 120u };
 
+    IST7789Spi& spi;
     IST7789Pin& resetPin;
     IST7789Pin& dataCommandPin;
-    IST7789Spi& spi;
-
-
 
     volatile static uint32_t Timer_ms;
 
