@@ -23,6 +23,12 @@ void ST7789::Task1ms(void)
     Timer_ms++;
 }
 
+void ST7789::Init(void)
+{
+    Reset();
+    SoftwareReset();
+}
+
 void ST7789::Reset(void)
 {
     resetPin.Reset();

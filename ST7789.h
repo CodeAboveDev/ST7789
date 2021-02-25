@@ -34,6 +34,7 @@ public:
     static void Task1ms(void);
 
     void Reset(void);
+    void Init(void);
 
 private:
     static constexpr uint8_t MinimumResetPulseTime_ms { 10u };
