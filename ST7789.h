@@ -37,6 +37,11 @@ public:
     void Init(void);
 
 private:
+    enum class Command : uint8_t
+    {
+        SoftwareReset = 0x01,
+    };
+
     static constexpr uint8_t MinimumResetPulseTime_ms { 10u };
     static constexpr uint8_t MaximumBlankingTime_ms { 120u };
 
