@@ -33,7 +33,6 @@ public:
 
     static void Task1ms(void);
 
-    void Reset(void);
     void Init(void);
 
 private:
@@ -51,9 +50,9 @@ private:
 
     volatile static uint32_t Timer_ms;
 
-    void Wait(uint32_t ms);
-    
-
+    void Reset(void);
+    void SoftwareReset(void);
+    void Wait(uint32_t ms);  
 };
 
 #endif // ST7789_H

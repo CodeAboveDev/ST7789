@@ -10,6 +10,8 @@
  ****************************************************************/
 #include "ST7789.h"
 
+#include <type_traits>
+
 volatile uint32_t ST7789::Timer_ms { 0u };
 
 ST7789::ST7789(IST7789Spi& spi, IST7789Pin& rstPin, IST7789Pin& dcPin)
@@ -35,6 +37,14 @@ void ST7789::Reset(void)
     Wait(MinimumResetPulseTime_ms);
     resetPin.Set();
     Wait(MaximumBlankingTime_ms);
+}
+
+void ST7789::SoftwareReset(void)
+{
+    dataCommandPin.Reset();
+    spi.Write(static_cast<std::underlying_type_t<Command>>(Command::SoftwareReset));
+    Wait(120);
+    dataCommandPin.Set();
 }
 
 void ST7789::Wait(uint32_t ms)
