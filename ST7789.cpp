@@ -12,8 +12,8 @@
 
 volatile uint32_t ST7789::Timer_ms { 0u };
 
-ST7789::ST7789(IPin& rstPin, IPin& dcPin)
-: resetPin(rstPin), dataCommandPin(dcPin)
+ST7789::ST7789(IST7789Spi& spi, IST7789Pin& rstPin, IST7789Pin& dcPin)
+: spi(spi), resetPin(rstPin), dataCommandPin(dcPin)
 {
 
 }
