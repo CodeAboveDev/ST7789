@@ -38,7 +38,15 @@ public:
 private:
     enum class Command : uint8_t
     {
-        SoftwareReset = 0x01,
+        SoftwareReset           = 0x01,
+        SleepOut                = 0x11,
+        InversionOn             = 0x21,
+        DisplayOn               = 0x29,
+        ColumnAddressSet        = 0x2A,
+        RowAddressSet           = 0x2B,
+        MemoryWrite             = 0x2C,
+        InterfacePixelFormat    = 0x3A,
+        WriteMemoryContinue     = 0x3C,
     };
 
     static constexpr uint8_t MinimumResetPulseTime_ms { 10u };
