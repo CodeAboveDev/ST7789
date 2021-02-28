@@ -60,6 +60,12 @@ private:
 
     void Reset(void);
     void SoftwareReset(void);
+    void SleepOut(void);
+    void InversionOn(void);
+    void DisplayOn(void);
+    void SetWindow(void);
+    void SetColorMode(void);
+    void SetScreenSize(uint16_t height, uint16_t width);
     void Wait(uint32_t ms);  
     void WriteData(uint8_t data);
     void WriteCommand(Command command);

@@ -47,10 +47,52 @@ void ST7789::Reset(void)
 
 void ST7789::SoftwareReset(void)
 {
-    dataCommandPin.Reset();
-    spi.Write(static_cast<std::underlying_type_t<Command>>(Command::SoftwareReset));
+    WriteCommand(Command::SoftwareReset);
     Wait(120);
-    dataCommandPin.Set();
+}
+
+void ST7789::SleepOut(void)
+{
+    WriteCommand(Command::SleepOut);
+    Wait(120);
+}
+
+void ST7789::InversionOn(void)
+{
+    WriteCommand(Command::InversionOn);
+    Wait(10);
+}
+
+void ST7789::DisplayOn(void)
+{
+    WriteCommand(Command::DisplayOn);
+    Wait(500);
+}
+
+void ST7789::SetColorMode(void)
+{
+    WriteCommand(Command::InterfacePixelFormat);
+    Wait(10);
+    WriteData(0x55);
+    Wait(10);
+}
+
+void ST7789::SetScreenSize(uint16_t height, uint16_t width)
+{
+    WriteCommand(Command::ColumnAddressSet);
+    Wait(10);
+    WriteData(0x00);
+    WriteData(0x00);
+    WriteData(((width-1) >> 8) & 0xFF);
+    WriteData((width-1) & 0xFF);
+    Wait(10);
+    WriteCommand(Command::RowAddressSet);
+    Wait(10);
+    WriteData(0x00);
+    WriteData(0x00);
+    WriteData(((height-1) >> 8) & 0xFF);
+    WriteData((height-1) & 0xFF);
+    Wait(10);
 }
 
 void ST7789::Wait(uint32_t ms)
