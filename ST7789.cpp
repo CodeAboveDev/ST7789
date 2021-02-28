@@ -12,6 +12,12 @@
 
 #include <type_traits>
 
+template <typename E>
+constexpr auto etoi(E const value)
+{
+    return static_cast<std::underlying_type_t<E>>(value);
+}
+
 volatile uint32_t ST7789::Timer_ms { 0u };
 
 ST7789::ST7789(IST7789Spi& spi, IST7789Pin& rstPin, IST7789Pin& dcPin)
