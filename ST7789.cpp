@@ -62,3 +62,14 @@ void ST7789::Wait(uint32_t ms)
         // Wait for them time to pass
     }
 }
+void ST7789::WriteData(uint8_t data)
+{
+    dataCommandPin.Set();
+    spi.Write(data);
+}
+
+void ST7789::WriteCommand(Command command)
+{
+    dataCommandPin.Reset();
+    spi.Write(etoi(command));
+}

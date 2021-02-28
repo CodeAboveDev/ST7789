@@ -61,6 +61,8 @@ private:
     void Reset(void);
     void SoftwareReset(void);
     void Wait(uint32_t ms);  
+    void WriteData(uint8_t data);
+    void WriteCommand(Command command);
 };
 
 #endif // ST7789_H
