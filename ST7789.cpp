@@ -35,6 +35,13 @@ void ST7789::Init(void)
 {
     Reset();
     SoftwareReset();
+    SleepOut();
+    SetColorMode();
+    InversionOn();
+    DisplayOn();
+    SetScreenSize(240, 240);
+
+    SendTestData();
 }
 
 void ST7789::Reset(void)
