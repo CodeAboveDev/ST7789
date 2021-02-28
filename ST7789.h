@@ -67,6 +67,9 @@ private:
     void SetColorMode(void);
     void SetScreenSize(uint16_t height, uint16_t width);
     void Wait(uint32_t ms);  
+
+    void SendTestData(void);
+
     void WriteData(uint8_t data);
     void WriteCommand(Command command);
 };

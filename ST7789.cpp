@@ -104,6 +104,37 @@ void ST7789::Wait(uint32_t ms)
         // Wait for them time to pass
     }
 }
+
+void ST7789::SendTestData(void)
+{   
+    uint16_t RGB565 = 0x07E0;
+    uint16_t RGB565_2 = 0xE463;
+    uint16_t RGB565_3  = 0xF800;
+
+    WriteCommand(Command::MemoryWrite);
+    Wait(10);
+
+    for(uint32_t i = 0u; i < 57600; i++)
+    {
+        WriteData(RGB565 >> 8);
+        WriteData(RGB565 & 0xFF);
+    }    
+    
+    WriteCommand(Command::MemoryWrite);
+    Wait(10);
+
+    for(uint32_t i = 0u; i < 57600; i++)
+    {
+        WriteData(RGB565_2 >> 8);
+        WriteData(RGB565_2 & 0xFF);
+    }
+    for(uint32_t i = 0u; i < 57600; i++)
+    {
+        WriteData(RGB565_3 >> 8);
+        WriteData(RGB565_3 & 0xFF);
+    }
+}
+
 void ST7789::WriteData(uint8_t data)
 {
     dataCommandPin.Set();
