@@ -12,6 +12,7 @@
 #define ST7789_H
 
 #include <stdint.h>
+#include <stdlib.h>
 
 class IST7789Pin
 {
@@ -24,6 +25,7 @@ class IST7789Spi
 {
 public:
     virtual void Write(const uint8_t byte) = 0;
+    virtual void Write(const uint8_t* buffer, size_t size) = 0;
 };
 
 class ST7789
@@ -71,6 +73,7 @@ private:
     void SendTestData(void);
 
     void WriteData(uint8_t data);
+    void WriteData(const uint8_t* data, size_t size);
     void WriteCommand(Command command);
 };
 

@@ -138,6 +138,12 @@ void ST7789::WriteData(uint8_t data)
     spi.Write(data);
 }
 
+void ST7789::WriteData(const uint8_t* buffer, size_t size)
+{
+    dataCommandPin.Set();
+    spi.Write(buffer, size);
+}
+
 void ST7789::WriteCommand(Command command)
 {
     dataCommandPin.Reset();
