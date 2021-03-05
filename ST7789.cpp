@@ -67,39 +67,31 @@ void ST7789::SleepOut(void)
 void ST7789::InversionOn(void)
 {
     WriteCommand(Command::InversionOn);
-    Wait(10);
 }
 
 void ST7789::DisplayOn(void)
 {
     WriteCommand(Command::DisplayOn);
-    Wait(500);
 }
 
 void ST7789::SetColorMode(void)
 {
     WriteCommand(Command::InterfacePixelFormat);
-    Wait(10);
     WriteData(0x55);
-    Wait(10);
 }
 
 void ST7789::SetScreenSize(uint16_t height, uint16_t width)
 {
     WriteCommand(Command::ColumnAddressSet);
-    Wait(10);
     WriteData(0x00);
     WriteData(0x00);
     WriteData(((width-1) >> 8) & 0xFF);
     WriteData((width-1) & 0xFF);
-    Wait(10);
     WriteCommand(Command::RowAddressSet);
-    Wait(10);
     WriteData(0x00);
     WriteData(0x00);
     WriteData(((height-1) >> 8) & 0xFF);
     WriteData((height-1) & 0xFF);
-    Wait(10);
 }
 
 void ST7789::Wait(uint32_t ms)
@@ -119,7 +111,6 @@ void ST7789::SendTestData(void)
     uint16_t RGB565_3  = 0xF800;
 
     WriteCommand(Command::MemoryWrite);
-    Wait(10);
 
     for(uint32_t i = 0u; i < 57600; i++)
     {
@@ -128,7 +119,6 @@ void ST7789::SendTestData(void)
     }    
     
     WriteCommand(Command::MemoryWrite);
-    Wait(10);
 
     for(uint32_t i = 0u; i < 57600; i++)
     {
