@@ -31,6 +31,23 @@ void ST7789::Task1ms(void)
     Timer_ms++;
 }
 
+void ST7789::SetPixel(int16_t x, int16_t y, uint16_t color)
+{
+    WriteCommand(Command::ColumnAddressSet);
+    WriteData((x >> 8) & 0xFF);
+    WriteData((x     ) & 0xFF);
+    WriteData(((x+1) >> 8) & 0xFF);
+    WriteData( (x+1) & 0xFF);
+    WriteCommand(Command::RowAddressSet);
+    WriteData((y >> 8) & 0xFF);
+    WriteData((y     ) & 0xFF);
+    WriteData(((y+1) >> 8) & 0xFF);
+    WriteData( (y+1) & 0xFF);
+    WriteCommand(Command::MemoryWrite);
+    WriteData((color >> 8) & 0xFF);
+    WriteData(color & 0xFF);
+}
+
 void ST7789::Init(void)
 {
     Reset();

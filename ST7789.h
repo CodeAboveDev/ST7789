@@ -37,6 +37,7 @@ public:
 
     void Init(void);
 
+    void SetPixel(int16_t x, int16_t y, uint16_t color);
 private:
     enum class Command : uint8_t
     {
@@ -75,6 +76,7 @@ private:
     void WriteData(uint8_t data);
     void WriteData(const uint8_t* data, size_t size);
     void WriteCommand(Command command);
+
 };
 
 #endif // ST7789_H
