@@ -36,7 +36,7 @@ public:
     static void Task1ms(void);
 
     void Init(void);
-
+    void RefreshDisplay(void);
     void SetPixel(int16_t x, int16_t y, uint16_t color);
 private:
     enum class Command : uint8_t

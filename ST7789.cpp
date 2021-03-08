@@ -61,6 +61,13 @@ void ST7789::Init(void)
     SendTestData();
 }
 
+void ST7789::RefreshDisplay(void)
+{
+    SetScreenSize(240, 240);
+    WriteCommand(Command::MemoryWrite);
+    WriteData(buffer, 240*240*2);
+}
+
 void ST7789::Reset(void)
 {
     resetPin.Reset();
