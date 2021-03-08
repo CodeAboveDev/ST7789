@@ -31,7 +31,7 @@ public:
 class ST7789
 {
 public:
-    ST7789(IST7789Spi& spi, IST7789Pin& rstPin, IST7789Pin& dcPin);
+    ST7789(IST7789Spi& spi, IST7789Pin& rstPin, IST7789Pin& dcPin, uint8_t* buf);
 
     static void Task1ms(void);
 
@@ -58,6 +58,7 @@ private:
     IST7789Spi& spi;
     IST7789Pin& resetPin;
     IST7789Pin& dataCommandPin;
+    uint8_t* buffer;
 
     volatile static uint32_t Timer_ms;
 
